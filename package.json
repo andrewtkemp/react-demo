@@ -1,0 +1,26 @@
+{
+  "name": "react-demo",
+  "version": "1.0.0",
+  "description": "This is a repository to demonstrate my react skills",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewtkemp1/react-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewtkemp1/react-demo/issues"
+  },
+  "homepage": "https://github.com/andrewtkemp1/react-demo#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}
