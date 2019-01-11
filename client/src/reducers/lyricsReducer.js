@@ -1,4 +1,4 @@
-const lyricsReducer = (state = {}, action) => {
+const lyricsReducer = (state = [], action) => {
     switch (action.type) {
         default:
           return state;
