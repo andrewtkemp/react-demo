@@ -1,8 +1,19 @@
 import axios from "axios";
 import * as React from "react";
-export class Search extends React.PureComponent<{}> {
+
+interface IArtist {
+  name:string,
+  href:string
+}
+interface ISearchState {
+  artists:IArtist[]
+  selectedLetter:string,
+  selectedArtist:string
+}
+export class Search extends React.PureComponent<{}, ISearchState> {
   public state = {
     artists: [],
+    selectedArtist:"",
     selectedLetter:""
   }
   public getArtists = (event:React.MouseEvent): void => {
@@ -15,7 +26,7 @@ export class Search extends React.PureComponent<{}> {
     })
   }
   public renderArtists = () => {
-    return this.state.artists.map((artist:{name:string,href:string}, index) => {
+    return this.state.artists.map((artist:IArtist, index) => {
       return (
         <li key={`artist${index}`} className="list-group-item">
         <a className="nav-link" href={artist.href}>{artist.name}</a></li>
