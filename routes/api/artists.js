@@ -5,8 +5,7 @@ const router = express.Router();
 
 
 router.get("/:letter", (req, res)=>{
-    let url = `http://www.plyrics.com/${req.params.letter}.html`
-
+    let url = `http://www.plyrics.com/${req.params.letter.toLowerCase()}.html`
 request(url, function (error, response, body) {
   const $ = cheerio.load(body)
   let artists = [];
@@ -19,10 +18,25 @@ request(url, function (error, response, body) {
         }
         artists.push(artistInfo)
   })
-    console.log("Hello World")
     res.send(artists);
 });
 })
 
+router.get("/:letter/:artist", (req, res) => {
+    let url = `http://www.plyrics.com/${req.params.letter}/${req.params.artist}.html`
+
+    request(url, function (error, response, body) {
+      const $ = cheerio.load(body)
+      let artistAlbums = [];
+      $("#listAlbum div").each(function(i, element) {
+            let albumInfo = $(this).text().split(/(\r\n|\n|\r)/gm);
+            let album = {
+                album:albumInfo
+            }
+            artistAlbums.push(album)
+      })
+      res.send(artistAlbums);
+    });
+})
 
 module.exports = router;
