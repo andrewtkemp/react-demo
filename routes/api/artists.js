@@ -28,13 +28,14 @@ router.get("/:letter/:artist", (req, res) => {
     request(url, function (error, response, body) {
       const $ = cheerio.load(body)
       let artistAlbums = [];
-      $("#listAlbum div").each(function(i, element) {
-            let albumInfo = $(this).text().split(/(\r\n|\n|\r)/gm);
+      $("#listAlbum div.album_header b").each(function(i, element) {
+            let name = $(this).text();
             let album = {
-                album:albumInfo
+                name:name,
+                tracks:[]
             }
             artistAlbums.push(album)
-      })
+        })
       res.send(artistAlbums);
     });
 })

@@ -1,12 +1,12 @@
 import axios from "axios";
 import * as React from "react";
+import {Link} from "react-router-dom";
 import ISearchState from "./SearchState";
 import {IArtist} from "./models";
 
 export class Search extends React.PureComponent<{}, ISearchState> {
   readonly state: Readonly<ISearchState> = {
     artists: [],
-    selectedArtist:"",
     selectedLetter:""
   }
  getArtists = (event:React.MouseEvent): void => {
@@ -26,7 +26,8 @@ export class Search extends React.PureComponent<{}, ISearchState> {
     return this.state.artists.map((artist:IArtist, index) => {
       return (
         <li key={`artist${index}`} className="list-group-item">
-        <a className="nav-link" href={artist.href}>{artist.name}</a></li>
+        <Link to={`/${this.state.selectedLetter.toLowerCase()}/${artist.name.toLowerCase()}`}>{artist.name}</Link>
+        </li>
       )
     })
   }

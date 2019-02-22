@@ -11,7 +11,7 @@ export const AppRouter: React.StatelessComponent<{}> = () => {
         <Switch>
           <Route exact={true} path="/" component={App} />
           <Route exact={true} path="/search" component={Search} />
-          <Route exact={true} path="/:letter/:artist" component={Search} />
+          <Route exact={true} path="/:letter/:artist" component={Artist} />
         </Switch>
       </div>
     </HashRouter>

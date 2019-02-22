@@ -11,7 +11,8 @@
     "no-console": {
        "severity": "warning"
     },
-    "member-ordering": [true]
+    "member-access": false,
+    "ordered-imports": false
  },
   "jsRules": {
     "no-console": false
