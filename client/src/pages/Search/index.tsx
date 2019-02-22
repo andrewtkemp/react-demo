@@ -1,22 +1,15 @@
 import axios from "axios";
 import * as React from "react";
+import ISearchState from "./SearchState";
+import {IArtist} from "./models";
 
-interface IArtist {
-  name:string,
-  href:string
-}
-interface ISearchState {
-  artists:IArtist[]
-  selectedLetter:string,
-  selectedArtist:string
-}
 export class Search extends React.PureComponent<{}, ISearchState> {
-  public state = {
+  readonly state: Readonly<ISearchState> = {
     artists: [],
     selectedArtist:"",
     selectedLetter:""
   }
-  public getArtists = (event:React.MouseEvent): void => {
+ getArtists = (event:React.MouseEvent): void => {
     const letter = event.currentTarget.innerHTML;
     axios.get(`/api/artists/${letter}`).then((response) => {
       this.setState({
@@ -25,7 +18,11 @@ export class Search extends React.PureComponent<{}, ISearchState> {
       })
     })
   }
-  public renderArtists = () => {
+ getArtist = (event:React.MouseEvent): void => {
+    const artist = event.currentTarget.innerHTML;
+    console.log(artist);
+  }
+ renderArtists = () => {
     return this.state.artists.map((artist:IArtist, index) => {
       return (
         <li key={`artist${index}`} className="list-group-item">
@@ -33,7 +30,7 @@ export class Search extends React.PureComponent<{}, ISearchState> {
       )
     })
   }
-  public renderHeaderLetterLI = () =>{
+ renderHeaderLetterLI = () =>{
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     return alphabet.map((value, index)=>{
       return(
@@ -43,7 +40,7 @@ export class Search extends React.PureComponent<{}, ISearchState> {
       )
     })
   }
-  public render() {
+ render() {
     return (
       <div className="container-fluid">
         <div className="row col-12">

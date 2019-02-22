@@ -10,7 +10,8 @@
   "rules": {
     "no-console": {
        "severity": "warning"
-    }
+    },
+    "member-ordering": [true]
  },
   "jsRules": {
     "no-console": false

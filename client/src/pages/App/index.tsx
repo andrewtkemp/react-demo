@@ -4,6 +4,6 @@ export const App: React.StatelessComponent<{}> = (props) => {
     return (
      <div className="container-fluid">
             <Link to ="/">Test</Link>
-         </div>
+     </div>
     );
-  }
+  } 
